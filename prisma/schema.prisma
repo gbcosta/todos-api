@@ -17,12 +17,12 @@ model Todo {
   is_deleted Boolean @default(value: false)
   is_done    Boolean @default(value: false)
   user       User    @relation(fields: [userId], references: [id])
-  userId     String  @unique
+  userId     String
 }
 
 model User {
   id    String @id @default(uuid())
   name  String
-  email String
+  email String @unique
   todos Todo[]
 }
