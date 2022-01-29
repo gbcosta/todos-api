@@ -1,14 +1,17 @@
 import { Request, Response } from "express";
 import { DeleteTodoService } from "@services/deleteTodoService";
 
-export class DeleteTodoController {
+class DeleteTodoController {
   async handle(req: Request, res: Response) {
-    const id = req.query.id;
+    const { id } = req.query;
 
     const deleteTodoService = new DeleteTodoService();
 
-    await deleteTodoService.excute(id);
+    const todo = await deleteTodoService.execute(id);
 
-    return res.status(200);
+    return res.status(200).json();
   }
 }
+
+const deleteTodoController = new DeleteTodoController();
+export { deleteTodoController };

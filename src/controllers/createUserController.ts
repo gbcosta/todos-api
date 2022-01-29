@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { CreateUserService } from "@services/createUserService";
 
-export class CreateUserController {
+class CreateUserController {
   async handle(req: Request, res: Response) {
     const { name, email } = req.body;
 
@@ -15,3 +15,6 @@ export class CreateUserController {
     return res.json(user);
   }
 }
+
+const createUserController = new CreateUserController();
+export { createUserController };
